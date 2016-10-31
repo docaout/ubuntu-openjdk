@@ -9,7 +9,7 @@ RUN apt-get update && \
     ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && \
         echo $TZ > /etc/timezone && \
         dpkg-reconfigure -f noninteractive tzdata && \
-        apt-get remove --purge -y $BUILD_PACKAGES $(apt-mark showauto) && \
+        apt-get autoremove -y && apt-get clean \
         rm -rf /var/lib/apt/lists/*
 
 ENV JAVA_HOME /usr/lib/jvm/default-java/
